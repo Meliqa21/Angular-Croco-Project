@@ -1,36 +1,46 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
-import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './posts.component.html',
-  styleUrl: './posts.component.css'
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-constructor(public Api:ApiService){}
-AllPost:any[] = [];
-selectedPost:any = null;
+  constructor(public Api: ApiService) {}
 
-ngOnInit(): void {
-  this.GetAllPost()
-}
+  AllPost: any[] = [];
+  selectedPost: any = null;
 
-GetAllPost(){
-  this.Api.GetAllPost().subscribe( (data:any) => (
-    this.AllPost = data
-  ))
-}
-ViewPost(post:any){
-  this.selectedPost = post
-  console.log(this.selectedPost.body)
-}
-CloseModal(){
-  this.selectedPost = null;
-}
-}
+  ngOnInit(): void {
+    this.GetAllPost();
+  }
 
+  GetAllPost() {
+    forkJoin({
+      posts: this.Api.GetAllPost(),
+      users: this.Api.GetAll(),
+    }).subscribe(({ posts, users }: any) => {
+      this.AllPost = posts.map((post: any) => {
+        const user = users.find((u: any) => u.id === post.userId);
+        return {
+          ...post,
+          userName: user ? user.name : 'უცნობი ავტორი',
+        };
+      });
+    });
+  }
 
+  ViewPost(post: any) {
+    this.selectedPost = post;
+    console.log(this.selectedPost.body);
+  }
 
+  CloseModal() {
+    this.selectedPost = null;
+  }
+}

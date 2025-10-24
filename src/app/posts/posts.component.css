@@ -143,7 +143,7 @@ article {
    .modal-content {
         flex-direction: column-reverse;
         padding: 15px;
-        width: 90%;
+        width: 75%;
         font-size: 14px;
     }
 }
