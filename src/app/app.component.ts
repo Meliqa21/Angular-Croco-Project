@@ -34,7 +34,7 @@ import { ApiService } from './api.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = "Crocobet Angular Project"
+  title = "Crocobet Angular Project";
   loading = false;
 
   constructor(public Api: ApiService) {
