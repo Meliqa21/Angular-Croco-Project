@@ -1,0 +1,11 @@
+<button routerLink="/">🔙</button>
+<h3>{{userName}}'s ToDos</h3>
+
+<section>
+@for (item of Todo; track $index) {
+<article [style.background-color]="item.completed ? 'green' : 'red'">
+    <p>N{{item.id}}</p>
+    <h5>{{item.title}}</h5>
+</article>
+}
+</section>

@@ -1,0 +1,25 @@
+<section>
+    @for (post of AllPost; track $index) 
+    {
+        <article>
+            <div class="left">
+        <h2>პოსტის ავტორი: {{post.userName}}</h2>
+        <h6>სატაური - {{post.title}}</h6>
+    </div>
+        <div class="right">
+        <button class="posts-btn" (click)="ViewPost(post)">View</button>
+    </div>
+        </article>
+    }
+    @if (selectedPost) {
+    <div class="modal-overlay" (click)="CloseModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modalInfo">
+        <h2>{{ selectedPost.title }}</h2>
+         <p>{{ selectedPost.body }}</p>
+    </div>
+    <span id="X" (click)="CloseModal()">❌</span>
+  </div>
+</div>
+    }
+</section>

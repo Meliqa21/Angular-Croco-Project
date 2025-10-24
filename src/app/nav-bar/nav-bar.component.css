@@ -1,0 +1,22 @@
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: #ffffff;
+    color: #189541;;
+    padding: 15px 0;
+    font-size: 24px;
+}
+
+li:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition-duration: 0.2s;
+}
+
+@media screen and (max-width:750px) {
+    li {
+        font-size: 18px;
+    }
+}

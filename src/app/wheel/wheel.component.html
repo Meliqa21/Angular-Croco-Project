@@ -1,0 +1,56 @@
+<div class="wheel-wrapper">
+  <h2>🎡 ბორბლის თამაში</h2>
+  
+  <div class="controls">
+    <label>
+      ნომერი (1–10):
+      <input 
+        type="number" 
+        [(ngModel)]="inputValue" 
+        min="1" 
+        max="10"
+        placeholder="1-10"
+      />
+    </label>
+    <button (click)="spin()" [disabled]="isSpinning">
+      {{ isSpinning ? 'ტრიალებს...' : 'დაატრიალე' }}
+    </button>
+  </div>
+
+  @if (error) {
+    <div class="error">{{ error }}</div>
+  }
+
+  <div class="wheel-container">
+    <div class="pointer">▼</div>
+    
+    <div
+      class="wheel"
+      [style.transform]="'rotate(' + rotation + 'deg)'"
+    >
+      @for (s of sectors; track $index) {
+        <div
+          class="sector"
+          [style.transform]="'rotate(' + ($index * sectorAngle) + 'deg)'"
+        >
+          <div class="sector-number">
+            <span>{{ s }}</span>
+          </div>
+        </div>
+      }
+      
+      <div class="center-circle"></div>
+    </div>
+  </div>
+
+  @if (showWinner) {
+    <div class="winner-overlay" (click)="closeWinner()">
+      <div class="winner-popup" (click)="$event.stopPropagation()">
+        <div class="winner-icon">🎉</div>
+        <h3>გამარჯვებულია</h3>
+        <div class="winner-number">{{ winnerNumber }}</div>
+        <button class="close-btn" (click)="closeWinner()">დახურვა</button>
+      </div>
+    </div>
+  }
+</div>

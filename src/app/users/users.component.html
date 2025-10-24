@@ -1,0 +1,47 @@
+ <div class="search">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="მოძებნე სახელი, გვარი ან მეილი..."
+      [(ngModel)]="SearchText"
+      (keyup.enter)="onSearch()"
+    />
+    <div class="buttons">
+    <button class="posts-btn" (click)="onSearch()">ძებნა</button>
+    <button class="posts-btn" style="background-color: red;" (click)="ClearSearch()">Reset</button>
+    </div>
+  </div>
+<div>
+  <h2>მომხმარებლების სია</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>სახელი</th>
+        <th>გვარი</th>
+        <th>ტელეფონი</th>
+        <th>მეილი</th>
+        <th>კომპანია</th>
+        <th>ვრცლად</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (user of Filtered; track $index) {
+      <tr>
+        <td>{{user.name.split(' ')[0]}}</td>
+        <td>{{user.name.split(' ')[1]}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.company.name}}</td>
+        <td class="Vrclad">
+        <button [routerLink]="['/Posts', user.name, user.id]" class="posts-btn">
+        პოსტები
+        </button>
+         <button [routerLink]="['/Todo', user.name, user.id]" class="posts-btn">
+        ToDo
+        </button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>

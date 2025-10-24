@@ -1,0 +1,58 @@
+.leaderboard-wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 16px;
+padding: 16px;
+}
+
+
+.filters {
+display: flex;
+gap: 10px;
+}
+
+
+.filters button {
+padding: 8px 14px;
+border: 1px solid #ccc;
+border-radius: 6px;
+background-color: #001E28;
+cursor: pointer;
+transition: all 0.2s;
+color: white;
+}
+
+
+.filters button.active {
+background-color: #189541;
+color: #fff;
+border-color: #12b147;
+}
+
+
+.filters button:hover {
+background-color: #12b147;
+}
+
+
+.leaderboard {
+width: 80%;
+border-collapse: collapse;
+text-align: center;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.leaderboard th, .leaderboard td {
+border: 1px solid #189541;
+padding: 8px;
+}
+
+
+.leaderboard th, .leaderboard td {
+background-color: #001E28;
+color: #189541;
+}
+
+

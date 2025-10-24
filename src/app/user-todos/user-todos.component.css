@@ -1,0 +1,81 @@
+h3 {
+    text-align: center;
+    color: #189541;
+}
+section {       
+  padding: 1rem;
+  margin: auto;
+  background-color: #001E28;
+  margin-top: 25px;
+  width: 80%;
+}
+article {
+    background-color: white;
+}
+
+section h6 {
+  color: #189541;
+  margin: 0;
+}
+
+section h2 {
+  font-size: 1.3rem;
+  color: #189541;
+  margin: 0.3rem 0;
+}
+
+section p {
+  color: white;
+  line-height: 1.5;
+  margin: 0;
+}
+
+section,article {
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+section {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 20px rgb(0, 0, 0);
+    justify-content: center;
+}
+
+article{
+    width: 25%;
+    text-align: center;
+    padding: 15px 0px;
+    color: white;
+    font-size: 14px;
+}
+
+
+button{
+  margin-top: 0.5rem;
+  margin: 10px 50px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  align-self: flex-end;         
+  transition: all 0.2s ease-in-out;
+  font-size: 32px;
+}
+
+button:hover {
+
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width:900px) {
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+  article {
+    width: 100%;
+  }
+}

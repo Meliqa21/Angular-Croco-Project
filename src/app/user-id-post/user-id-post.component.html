@@ -1,0 +1,13 @@
+<button routerLink="/">🔙</button>
+<h3>{{userName}} Posts</h3>
+<section>
+    @for (post of Posts; track $index) 
+    {
+        <article>
+        <h6>პოსტი N{{post.id}}</h6>
+        <h2>სათაური: {{post.title}}</h2>
+        <p>{{post.body}}</p>
+        </article>
+    }
+</section>
+
